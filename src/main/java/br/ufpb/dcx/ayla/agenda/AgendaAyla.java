@@ -1,6 +1,7 @@
 package br.ufpb.dcx.ayla.agenda;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.HashMap;
@@ -16,31 +17,45 @@ public class AgendaAyla implements Agenda {
     }
 
 
+
     @Override
     public boolean cadastraContato(String nome, int dia, int mes) {
-        //TODO
-        return false;
+        if (this.contatos.containsKey(nome)){
+            return false;
+        } else {
+            Contato c = new Contato(nome, dia, mes);
+            this.contatos.put(nome, c);
+            return true;
+        }
     }
 
     @Override
     public Collection<Contato> pesquisaAniversariantes(int dia, int mes) {
-        //TODO
-        return List.of();
+        Collection<Contato> contatosDoDia = new ArrayList<>();
+        for(Contato c: this.contatos.values()){
+            if (c.getDiaAniversario()==dia && c.getMesAniversario()==mes){
+                contatosDoDia.add(c);
+            }
+        }
+        return contatosDoDia;
     }
 
     @Override
-    public boolean removeContato(String nome) throws ContatoInexistenteException {
-        //TODO
-        return false;
+    public void removeContato(String nome) throws ContatoInexistenteException {
+        if (this.contatos.containsKey(nome)){
+            this.contatos.remove(nome);
+        } else {
+            throw new ContatoInexistenteException("Não existe contato com o nome "+nome);
+        }
     }
 
     @Override
     public void salvarDados() throws IOException {
-        //TODO
+        this.gravador.salvarContatos(this.contatos);
     }
 
     @Override
     public void recuperarDados() throws IOException {
-        //TODO
+        this.contatos = this.gravador.recuperarContatos();
     }
 }

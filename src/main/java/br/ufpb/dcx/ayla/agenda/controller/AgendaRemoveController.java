@@ -20,7 +20,6 @@ public class AgendaRemoveController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String nome = JOptionPane.showInputDialog(janelaPrincipal,
                 "Qual o nome do aniversariante a remover?");
-        boolean removeu = false;
         try {
             agenda.removeContato(nome);
             JOptionPane.showMessageDialog(janelaPrincipal,
