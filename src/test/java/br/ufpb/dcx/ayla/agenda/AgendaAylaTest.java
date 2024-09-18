@@ -26,8 +26,8 @@ public class AgendaAylaTest {
         Contato jose = new Contato("José",20,8);
         assertTrue(contatosAchados.contains(jose));
         try {
-            boolean removeu = agenda.removeContato("José");
-            assertTrue(removeu);
+            agenda.removeContato("José");
+            //Não deve lançar exceção
         } catch (ContatoInexistenteException e) {
             fail("Lançou exceção quando não deveria");
         }
