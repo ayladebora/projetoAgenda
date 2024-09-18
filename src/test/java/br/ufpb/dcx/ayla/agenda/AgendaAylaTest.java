@@ -31,6 +31,5 @@ public class AgendaAylaTest {
         } catch (ContatoInexistenteException e) {
             fail("Lançou exceção quando não deveria");
         }
-
     }
 }
