@@ -8,11 +8,11 @@ import java.awt.event.WindowListener;
 
 public class AgendaGUI extends JFrame {
     public AgendaGUI(){
-        setTitle("Agenda de Aniversários de Ayla");
-        setSize(600,600);
-        setLocation(0, 0);
+        super.setTitle("Agenda de Aniversários da turma de POO");
+        super.setSize(1000,600);
+        super.setLocation(100, 200);
         //localização da janela na tela
-        setResizable(false);
+        super.setResizable(true);
         //janela não redimensionável
         getContentPane().setBackground(Color.lightGray);
     }
@@ -22,7 +22,7 @@ public class AgendaGUI extends JFrame {
         janela.setVisible(true);
         WindowListener fechadorDeJanelaPrincipal = new WindowAdapter() {
             public void windowClosing(WindowEvent e){
-
+                System.out.println("Saindo");
                 System.exit(0);
             }
         };
